@@ -9,7 +9,7 @@ TILE_HEIGHT = 40
 LASER_LENGTH = 20
 MAP_HEIGHT = 10
 MAP_WIDTH = 10
-MAX_BLOCKS = 3
+MAX_BLOCKS = 4
 BLOCK_ROWS = [3,4, 5]
 MAX_WHITE = 4
 MAX_BROWN = 3
@@ -91,16 +91,20 @@ class Game(object):
                 x,y,w,h,c = block.get_object()
                 pygame.draw.rect(self.screen, c, [x, y, w, h])
 
+
             for white in self.whites:
-                white.set_shots(self.shots)
-                white.run()
-                x,y,w,h,c = white.get_object()
-                pygame.draw.rect(self.screen, c, [x, y, w, h])
+                if white:
+                    white.set_shots(self.shots)
+                    if WINNER == TEAMS.WHITE:
+                        white.run()
+                    x,y,w,h,c = white.get_object()
+                    pygame.draw.rect(self.screen, c, [x, y, w, h])
 
             for brown in self.browns:
                 if brown:
                     brown.set_shots(self.shots)
-                    brown.run()
+                    if WINNER == TEAMS.BROWN:
+                        brown.run()
                     x,y,w,h,c = brown.get_object()
                     pygame.draw.rect(self.screen, c, [x, y, w, h])
 
@@ -113,7 +117,16 @@ class Game(object):
             # Go ahead and update the screen with what we've drawn.
             # This MUST happen after all the other drawing commands.
             pygame.display.flip()
-
+            browns_alive = self._check_alive(self.browns)
+            whites_alive = self._check_alive(self.whites)
+            if not browns_alive or not whites_alive:
+                done = True
+                if not browns_alive and WINNER == TEAMS.WHITE:
+                    print "you won"
+                elif not whites_alive and WINNER == TEAMS.BROWN:
+                    print "you won"
+                else:
+                    print "You lost"
         # Be IDLE friendly
         pygame.quit()
 
@@ -142,39 +155,42 @@ class Game(object):
         if shot_info in self.already_shot:
             end_x = start_x
             end_y = start_y
-            for b in self.browns:
-                if b:
-                    x, y = b.get_pos()
-                    print "Track"
-                    print start_x, x, end_x
-                    print start_y, y, end_y
-                    print "End track"
-                    hit_brown = False
+            self._check_hit(self.browns, dir, end_x, end_y, start_x, start_y, shot_info)
+            self._check_hit(self.whites, dir, end_x, end_y, start_x, start_y, shot_info)
+
+    def _check_hit(self, container, dir, end_x, end_y, start_x, start_y, shot_info):
+        for person in container:
+            if person:
+                x, y = person.get_pos()
+                person_info = "%d%d%d" % (person.ind, x, y)
+                if shot_info != person_info:
+                    is_hit = False
                     if dir == DIRECTIONS.RIGHT:
                         end_x += TILE_WIDTH
                         if x <= end_x and x >= start_x and y == start_y:
-                            hit_brown = True
+                            is_hit = True
                     elif dir == DIRECTIONS.LEFT:
                         end_x -= TILE_WIDTH
                         if x >= end_x and x <= start_x and y == start_y:
-                            hit_brown = True
+                            is_hit = True
                     elif dir == DIRECTIONS.UP:
                         end_y -= TILE_HEIGHT
                         if y >= end_y and y <= start_y and x == start_x:
-                            hit_brown = True
+                            is_hit = True
                     elif dir == DIRECTIONS.DOWN:
                         end_y += TILE_HEIGHT
                         if y <= end_y and y >= start_y and x == start_x:
-                            hit_brown = True
-                    if hit_brown:
-                        print "Hit brown"
-                        print start_x, end_x, x
-                        ind = b.ind-1
-                        self.browns[ind] = None
+                            is_hit = True
+                    if is_hit:
+                        ind = person.ind - 1
+                        container[ind] = None
 
-
-
-
+    def _check_alive(self, container):
+        team_alive = True
+        x = list(set(container))
+        if len(x) == 1 and x[0] == None:
+            team_alive = False
+        return team_alive
 
 
 if __name__ == "__main__":

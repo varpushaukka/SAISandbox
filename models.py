@@ -31,7 +31,6 @@ class Model(object):
         self.ind = ind
 
     def set_pos(self, x, y):
-        print x,y
         self.pos_x = int(x)
         self.pos_y = int(y)
 
