@@ -70,6 +70,16 @@ class ManWithLaser(Model):
     def set_shots(self, shots):
         self.shots = shots
 
+    def check_boundaries(self):
+        if self.pos_x <= 0:
+            self.pos_x = 0
+        elif self.pos_x >= self.width*9:
+            self.pos_x = self.width*9
+        elif self.pos_y <= 0:
+            self.pos_y = 0
+        elif self.pos_y >= self.height*9:
+            self.pos_y = self.height*9
+
     def run(self):
         pass
 

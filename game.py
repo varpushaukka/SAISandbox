@@ -50,6 +50,7 @@ class Game(object):
             w = WhiteManWithLaser(x,y, self.tile_width, self.tile_height, len(self.whites)+1)
             w.set_blocks(self.blocks)
             w.set_shots(self.shots)
+            w.check_boundaries()
             self.whites.append(w)
 
         for _ in range(0, MAX_BROWN):
@@ -59,6 +60,7 @@ class Game(object):
             b = BrownRebelScumbagWithLaser(x, y, self.tile_width, self.tile_height, len(self.browns) + 1)
             b.set_blocks(self.blocks)
             b.set_shots(self.shots)
+            b.check_boundaries()
             self.browns.append(b)
 
 
