@@ -23,7 +23,6 @@ class Game(object):
 
     def __init__(self, size=None):
         self.screen = pygame.display.set_mode(size)
-        self.map = []
         self.tile_width = TILE_WIDTH
         self.tile_height = TILE_HEIGHT
         self.blocks = []
@@ -31,8 +30,6 @@ class Game(object):
         self.browns = []
         self.shots = []
         self.already_shot = []
-        for x in range(MAP_WIDTH):
-            self.map.append([0]*MAP_HEIGHT)
 
         for row in BLOCK_ROWS:
             for _ in range(0, MAX_BLOCKS):
