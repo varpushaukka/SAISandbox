@@ -1,7 +1,21 @@
 from colors import BLACK, GRAY, RED
 from enum import Enum
-
 DIRECTIONS = Enum('LEFT', 'RIGHT', 'UP', 'DOWN')
+
+class Shot(object):
+
+    def __init__(self, color, x, y, direction, ind):
+        self.color = color
+        self.x = x
+        self.y = y
+        self.direction = direction
+        self.shooter_ind = ind
+
+    def get_object(self):
+        return self.x, self.y, self.color, self.direction, self.shooter_ind
+
+    def get_pos(self):
+        return  self.x, self.y
 
 class Model(object):
     pos_x = 0
@@ -45,6 +59,7 @@ class Block(Model):
 
 class ManWithLaser(Model):
     color = RED
+    beam = RED
     shootable = True
     last_facing = DIRECTIONS.LEFT
     prev_pos_x = None
@@ -53,9 +68,16 @@ class ManWithLaser(Model):
     def set_blocks(self, blocks):
         self.blocks = blocks
 
+    def set_shots(self, shots):
+        self.shots = shots
 
     def run(self):
         pass
+
+    def shoot(self):
+        s = Shot(self.beam, self.pos_x, self.pos_y, self.last_facing, self.ind)
+        self.shots.append(s)
+
 
     def move_left(self):
         self._update_prev_pos()
@@ -75,7 +97,7 @@ class ManWithLaser(Model):
 
     def move_right(self):
         self._update_prev_pos()
-        self.last_facing = DIRECTIONS.UP
+        self.last_facing = DIRECTIONS.RIGHT
         next_pos_x = self.pos_x + self.width
         if next_pos_x >= self.width*9:
             next_pos_x = self.width*9
