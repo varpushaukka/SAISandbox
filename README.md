@@ -3,7 +3,15 @@
 
 # Challenge
 
-Decide a team to win and make it so!
+Decide a team to win and make it so and win movie tickets for movie X!
+
+# Deadline
+
+Deadline for the challenge is 7.12.2016
+
+# How to apply?
+
+Fill up google form <url here> and fork this repoistory. Create pull request after you've finalized your code before deadline. You'll be contacted at 8.12.2016
 
 # Factions
 
