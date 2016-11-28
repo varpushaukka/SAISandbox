@@ -3,15 +3,15 @@
 
 # Challenge
 
-Decide a team to win and make it so and win movie tickets for movie X!
+Decide which team is the winning team and then just implement the code so that your team wins! Best solutions win the ticket for Star Wars preview on 14th December at Finnkino Tennispalatsi!
 
 # Deadline
 
-Deadline for the challenge is 7.12.2016
+Deadline for the challenge is on 7th December 2016
 
 # How to apply?
 
-Fill up google form <url here> and fork this repoistory. Create pull request after you've finalized your code before deadline. You'll be contacted at 8.12.2016
+Fill your contact information to Google Form and fork this repoistory. Create pull request after you've finalized your code before deadline. You will be contacted on 8th December 2016.
 
 # Factions
 
@@ -50,4 +50,4 @@ All of the move methods will return False if there is an obstacle.
 
 # Run game
 
-Use following command `python game.py` the game will automatically end after one of the teams is dead. The game will print to terminal "You win" or "You lose" depending if the team you decided to win actually won.
+Use following command `python game.py` and the game will automatically end after one of the teams is dead. The game will print to terminal "You win" or "You lose" depending if the team you decided to win actually won.
