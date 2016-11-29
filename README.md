@@ -3,15 +3,15 @@
 
 # Challenge
 
-Decide which team is the winning team and then just implement the code so that your team wins! Best solutions win the ticket for Star Wars preview on 14th December at Finnkino Tennispalatsi!
+Decide which team is the winning team and then just implement the code so that your team wins! Best solutions wins the ticket to Star Wars premiere on the 14th of December at Finnkino Tennispalatsi!
 
 # Deadline
 
-Deadline for the challenge is on 7th December 2016
+Deadline for the challenge is on the 7th of December 2016.
 
 # How to apply?
 
-Fill your contact information to Google Form and fork this repoistory. Create pull request after you've finalized your code before deadline. You will be contacted on 8th December 2016.
+Fill your contact information in Google Form and fork this repository. Create a pull request after you've finalized your code before deadline. You will be contacted on the 8th of December 2016.
 
 # Factions
 
@@ -21,9 +21,9 @@ WhiteManWithLazer aka White
 
 # Rules
 
-You can only modify challenge.py from this repository. Change the winning team of your choice by changing value of `WINNER` variable using enums defined `TEAMS` (WHITE or BROWN).
+You can only modify challenge.py from this repository. Change the winning team of your choice by changing value of `WINNER` variable using enums defined TEAMS (WHITE or BROWN).
 
-The run method from chosen team will be run on every loop on the main loop.
+The run method from a chosen team will be run on every loop on the main loop.
 
 The team that should lose will stay put for the whole game.
 
@@ -50,4 +50,4 @@ All of the move methods will return False if there is an obstacle.
 
 # Run game
 
-Use following command `python game.py` and the game will automatically end after one of the teams is dead. The game will print to terminal "You win" or "You lose" depending if the team you decided to win actually won.
+Use following command `python game.py` and the game will automatically end after one of the teams are dead. The game will print to terminal "You win" or "You lose" depending if the team you decided to win actually won.
