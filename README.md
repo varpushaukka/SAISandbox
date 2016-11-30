@@ -7,11 +7,11 @@ Decide which team is the winning team and then just implement the code so that y
 
 # Deadline
 
-Deadline for the challenge is on the 7th of December 2016.
+Deadline for the challenge is on the 8th of December 2016.
 
 # How to apply?
 
-Fill your contact information in [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdP5XzFXOa1vu61R_JwB0A5KopR4RRhUKA-QEwvzEZLZPh4nQ/viewform?c=0&w=1) and fork this repository. Create a pull request after you've finalized your code before deadline. You will be contacted on the 8th of December 2016.
+Fill your contact information in [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdP5XzFXOa1vu61R_JwB0A5KopR4RRhUKA-QEwvzEZLZPh4nQ/viewform?c=0&w=1) and fork this repository. Create a pull request after you've finalized your code before deadline. You will be contacted on the 9th of December 2016.
 
 # Factions
 
